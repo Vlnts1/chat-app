@@ -22,35 +22,44 @@ export const ImageCol = styled.div`
   display: flex;
   justify-content: center;
 `;
-export const UserIsOnline = styled.div`
+
+export const OnlineIndicator = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: limegreen;
   position: relative;
   top: 30px;
   right: 10px;
+
+  background-color: ${(props) => {
+    return props.theme.colors.green;
+  }};
 `;
+
 export const DetailsCol = styled.div`
   position: relative;
   width: 100%;
 `;
-export const ChatListHead = styled.div`
+
+export const ChatListHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
   padding-left: 5px;
 `;
+
 export const ChatMessageCol = styled.div`
   position: relative;
   padding-left: 5px;
   width: 100%;
 `;
-export const ChatAvatar = styled.img`
+
+export const UserChatAvatar = styled.img`
   height: 40px;
   width: 40px;
   border-radius: 100%;
 `;
+
 export const ChatTitle = styled.div`
   font-family: 'Open-Sans', sans-serif;
   color: rgb(67, 66, 66);
@@ -58,10 +67,12 @@ export const ChatTitle = styled.div`
   justify-content: space-between;
   margin-bottom: 5px;
 `;
+
 export const ChatCreatedDate = styled.div`
   white-space: nowrap;
   font-size: 1rem;
 `;
+
 export const ChatLastMessage = styled.div`
   justify-content: space-between;
   align-items: center;

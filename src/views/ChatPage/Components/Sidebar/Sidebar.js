@@ -1,16 +1,16 @@
 import React from 'react';
 import { ChatList } from './Chatlist/Chatlist';
 import { ChatSearch } from './ChatSearch/ChatSearch';
-import { HeaderAuthUser } from './HeaderAuthUser/HeaderAuthUser';
-import { Container, Row } from './Sidebar.styled';
+import { AuthUserHeader } from './AuthUserHeader/AuthUserHeader';
+import { Container, Col } from './Sidebar.styled';
 
 const Sidebar = () => {
   return (
     <Container>
-      <Row>
-        <HeaderAuthUser />
+      <Col>
+        <AuthUserHeader />
         <ChatSearch />
-      </Row>
+      </Col>
       <ChatList />
     </Container>
   );

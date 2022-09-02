@@ -7,6 +7,12 @@ const MessageList = () => {
     <Container>
       <Message />
       <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
     </Container>
   );
 };

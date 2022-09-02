@@ -11,14 +11,17 @@ export const Header = styled.div`
   font-size: 30px;
   border: 1px solid rgb(238, 238, 238);
 `;
+
 export const Row = styled.div`
   display: flex;
 `;
+
 export const CurrentChatUserAvatar = styled.img`
   height: 40px;
   width: 40px;
   border-radius: 100%;
 `;
+
 export const CurrentChatUserName = styled.h1`
   font-family: 'Open Sans', sans-serif;
   font-size: 1rem;

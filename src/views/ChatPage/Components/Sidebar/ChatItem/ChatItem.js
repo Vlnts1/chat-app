@@ -1,29 +1,33 @@
 import React from 'react';
 import {
-  ChatAvatar,
+  UserChatAvatar,
   ChatCreatedDate,
   ChatLastMessage,
-  ChatListHead,
   ChatMessageCol,
   ChatTitle,
   ContainerChatItem,
   DetailsCol,
   ImageCol,
-  UserIsOnline,
+  OnlineIndicator,
+  ChatListHeader,
 } from './ChatItem.styled';
 
 const ChatItem = () => {
   return (
     <ContainerChatItem>
       <ImageCol>
-        <ChatAvatar src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png" alt="" />
-        <UserIsOnline />
+        <UserChatAvatar
+          src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
+          alt="User Chat Avatar"
+        />
+        <OnlineIndicator />
       </ImageCol>
+
       <DetailsCol>
-        <ChatListHead>
+        <ChatListHeader>
           <ChatTitle>Josefina</ChatTitle>
           <ChatCreatedDate>12/09/22</ChatCreatedDate>
-        </ChatListHead>
+        </ChatListHeader>
 
         <ChatMessageCol>
           <ChatLastMessage>We are losing money! Quick!</ChatLastMessage>

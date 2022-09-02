@@ -8,6 +8,7 @@ export const Container = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
 `;
+
 export const ChatListHeader = styled.h2`
   font-weight: lighter;
   font-family: 'Open Sans', sans-serif;

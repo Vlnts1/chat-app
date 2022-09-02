@@ -4,10 +4,10 @@ import { Sidebar } from './Components/Sidebar/Sidebar';
 
 const ChatPage = () => {
   return (
-    <div>
+    <>
       <Chat />
       <Sidebar />
-    </div>
+    </>
   );
 };
 

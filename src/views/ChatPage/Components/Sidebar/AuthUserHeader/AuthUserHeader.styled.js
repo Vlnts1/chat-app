@@ -6,10 +6,12 @@ export const Header = styled.div`
   color: black;
   font-size: 30px;
 `;
-export const Row = styled.div`
+
+export const Col = styled.div`
   display: flex;
 `;
-export const AuthAvatar = styled.img`
+
+export const AuthUserAvatar = styled.img`
   height: 40px;
   width: 40px;
   border-radius: 100%;

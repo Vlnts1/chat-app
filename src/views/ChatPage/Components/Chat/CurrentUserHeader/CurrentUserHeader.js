@@ -4,15 +4,15 @@ import {
   CurrentChatUserName,
   Header,
   Row,
-} from './HeaderCurrentUser.styled';
+} from './CurrentUserHeader.styled';
 
-const HeaderCurrentUser = () => {
+const CurrentUserHeader = () => {
   return (
     <Header>
       <Row>
         <CurrentChatUserAvatar
           src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
-          alt=""
+          alt="User Avatar"
         />
         <CurrentChatUserName>Josefina</CurrentChatUserName>
       </Row>
@@ -20,4 +20,4 @@ const HeaderCurrentUser = () => {
   );
 };
 
-export { HeaderCurrentUser };
+export { CurrentUserHeader };
