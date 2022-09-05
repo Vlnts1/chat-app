@@ -3,13 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background: rgb(248, 248, 248);
   position: relative;
-  display: flex; 
-  height: 20vh;
+  display: flex;
+  height: 17vh;
   box-sizing: border-box;
   padding: 25px;
   text-align: center;
   @media (max-width: 768px) {
     flex-direction: column;
+  }
 `;
 
 export const Input = styled.input`
