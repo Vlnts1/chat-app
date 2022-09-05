@@ -7,9 +7,10 @@ export const MessageContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
+  }
 `;
 
-export const MessagesCol = styled.div`
+export const MessagesCol = styled.div<{ myMessage: string }>`
   display: flex;
   flex-direction: column;
 
@@ -18,14 +19,14 @@ export const MessagesCol = styled.div`
   }};
 `;
 
-export const MessageBox = styled.div`
+export const MessageBox = styled.div<{ myMessage: string }>`
   display: flex;
   padding: ${(props) => {
     return props.myMessage ? '0px 25px;' : '5px 5px;';
   }};
 `;
 
-export const MessageDate = styled.div`
+export const MessageDate = styled.div<{ myMessage: string }>`
   display: flex;
   flex-direction: column;
   font-size: 12px;
@@ -52,7 +53,7 @@ export const ReceiverUserAvatar = styled.img`
   margin-right: 10px;
 `;
 
-export const MessageText = styled.div`
+export const MessageText = styled.div<{ myMessage: string }>`
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
   padding: 10px;
@@ -67,8 +68,8 @@ export const MessageText = styled.div`
     return props.myMessage ? props.theme.colors.gray : props.theme.colors.dimgray;
   }};
 
- @media (max-width: 768px) {
+  @media (max-width: 768px) {
     flex-direction: column;
     max-width: 500px;
-
+  }
 `;

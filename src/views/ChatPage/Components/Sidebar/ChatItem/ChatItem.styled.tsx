@@ -9,11 +9,12 @@ export const ContainerChatItem = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(231,231,231);
+    background-color: rgb(231, 231, 231);
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
+  }
 `;
 
 export const ImageCol = styled.div`

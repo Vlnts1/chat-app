@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Container, Input } from './ChatInput.styled';
 
-const ChatInput = () => {
+const ChatInput: FunctionComponent = () => {
   return (
     <Container>
       <Input placeholder="Type your message..." />

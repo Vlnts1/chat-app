@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   border: 1px solid rgb(238, 238, 238);
-  height:490px;
-  overflow:auto;
+  height: 490px;
+  overflow: auto;
   padding: 0px 0px 50px 0px;
   @media (max-width: 768px) {
     flex-direction: column;
+  }
 `;
 
 export const ChatListHeader = styled.h2`

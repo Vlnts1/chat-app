@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import {
   MessageDate,
   MessageContainer,
@@ -8,7 +8,11 @@ import {
   MessagesCol,
 } from './Message.styled';
 
-const Message = () => {
+interface MessageProps {
+  myMessage: string;
+}
+
+const Message: FunctionComponent<MessageProps> = ({ myMessage }) => {
   return (
     <MessageContainer>
       <MessagesCol>
@@ -22,11 +26,11 @@ const Message = () => {
         <MessageDate>17:00 17/02/19</MessageDate>
       </MessagesCol>
 
-      <MessagesCol myMessage>
-        <MessageBox myMessage>
-          <MessageText myMessage> Message</MessageText>
+      <MessagesCol myMessage={myMessage}>
+        <MessageBox myMessage={myMessage}>
+          <MessageText myMessage={myMessage}> Message</MessageText>
         </MessageBox>
-        <MessageDate myMessage>17:00 17/02/19</MessageDate>
+        <MessageDate myMessage={myMessage}>17:00 17/02/19</MessageDate>
       </MessagesCol>
     </MessageContainer>
   );

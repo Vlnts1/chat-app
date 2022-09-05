@@ -2,7 +2,7 @@ import React from 'react';
 import { Message } from '../Message/Message';
 import { Container } from './MessageList.styled';
 
-const MessageList = () => {
+function MessageList() {
   return (
     <Container>
       <Message />
@@ -15,6 +15,6 @@ const MessageList = () => {
       <Message />
     </Container>
   );
-};
+}
 
 export { MessageList };
