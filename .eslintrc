@@ -1,77 +1,21 @@
 {
-  "env": {
-      "browser": true,
-      "es2021": true
-  },
-  "extends": [
-      "plugin:react/recommended",
-      "airbnb",
-      "airbnb-typescript"
-  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["./tsconfig.json"],
-      "ecmaFeatures": {
-          "jsx": true
-      },
-      "ecmaVersion": 12,
-      "sourceType": "module"
-    },
-  "plugins": [
-      "react",
-      "@typescript-eslint",
-      "prettier"
-  ],
-  "rules": {
-    "max-len": ["error", {"code": 110}],
-          "prefer-promise-reject-errors": ["off"],
-          "react/prop-types": "off",
-          "no-return-assign": ["off"],
-          "react/prefer-stateless-function": ["off"],
-          "arrow-body-style": ["error", "always"],
-          "react/self-closing-comp": "off",
-          "react/function-component-definition": [
-              2,
-              {
-                "namedComponents": "arrow-function"
-              }
-            ],
-          "quotes": [
-              "off", 
-              "double", 
-              {
-                  "avoidEscape": true
-              }
-          ],
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "js": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never"
-      }
-   ],
-    "react/jsx-filename-extension": [
-      "warn", { 
-        "extensions": [
-          ".tsx",
-          ".js", 
-          ".jsx"
-        ] 
-      }
-    ],
-    "import/no-extraneous-dependencies": [
-      "error", {
-        "devDependencies": true
-      }
-    ],
-    "import/prefer-default-export": "off"
+    "ecmaVersion": 12,
+    "sourceType": "module"
   },
-  "settings": {
-    "import/resolver": {
-        "typescript": {}
-    }
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "false": "off",
+    "@typescript-eslint/no-empty-function": "off"
+  },
+
+  "env": {
+    "browser": true,
+    "es2021": true
   }
 }
