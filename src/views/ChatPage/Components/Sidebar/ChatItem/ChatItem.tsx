@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Message, User } from '../../../../../types/Types';
 import {
   UserChatAvatar,
   ChatCreatedDate,
@@ -12,25 +13,41 @@ import {
   ChatListHeader,
 } from './ChatItem.styled';
 
-const ChatItem = () => {
+type ChatItemProps = {
+  specificUser: User;
+  specificUserMessages: Message[];
+};
+
+const ChatItem = ({ specificUser, specificUserMessages }: ChatItemProps) => {
+  const [latestMessage, setLatestMessage] = React.useState<Message>({} as Message);
+  const [latestMessageTime, setLatestMessageTime] = React.useState<string>('');
+
+  useEffect(() => {
+    const sortedMessages = [...specificUserMessages].sort(
+      (a, b) => new Date(b.time).getTime() - new Date(a.time).getTime(),
+    );
+    if (sortedMessages.length) {
+      setLatestMessage(sortedMessages[0]);
+      const date = new Date(sortedMessages[0].time).toDateString();
+      setLatestMessageTime(date);
+    }
+  }, [latestMessage, specificUserMessages]);
+  
   return (
     <ContainerChatItem>
       <ImageCol>
-        <UserChatAvatar
-          src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
-          alt="User Chat Avatar"
-        />
+        <UserChatAvatar src={specificUser.avatar} alt="User Chat Avatar" />
         <OnlineIndicator />
       </ImageCol>
 
       <DetailsCol>
         <ChatListHeader>
-          <ChatTitle>Josefina</ChatTitle>
-          <ChatCreatedDate>12/09/22</ChatCreatedDate>
+          <ChatTitle>{specificUser.name}</ChatTitle>
+          <ChatCreatedDate>{latestMessageTime}</ChatCreatedDate>
         </ChatListHeader>
 
         <ChatMessageCol>
-          <ChatLastMessage>We are losing money! Quick!</ChatLastMessage>
+          <ChatLastMessage>{latestMessage.text}</ChatLastMessage>
         </ChatMessageCol>
       </DetailsCol>
     </ContainerChatItem>
