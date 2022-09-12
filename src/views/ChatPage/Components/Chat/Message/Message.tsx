@@ -7,9 +7,9 @@ import {
   MessageText,
 } from './Message.styled';
 
-interface MessageProps {
+type MessageProps = {
   IsMyMessage: boolean;
-}
+};
 
 const Message: FC<MessageProps> = ({ IsMyMessage }) => {
   return (

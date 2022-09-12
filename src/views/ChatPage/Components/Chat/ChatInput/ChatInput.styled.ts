@@ -1,20 +1,25 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  background: rgb(248, 248, 248);
   position: relative;
-  width: 100%;
-  height: 130px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 20vh;
+  box-sizing: border-box;
+  padding: 25px;
+  text-align: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Input = styled.input`
-  width: 80%;
+  width: 100%;
+  height: 2vh;
   outline: none;
   border: 1px solid rgb(238, 238, 238);
   background: #fff;
-  padding: 10px;
-  border-radius: 30px;
+  padding: 25px;
+  border-radius: 20px;
   font-size: 14px;
 `;

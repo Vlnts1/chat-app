@@ -4,7 +4,7 @@ export const ContainerChatItem = styled.div`
   color: rgb(67, 66, 66);
   font-size: 1.3rem;
   border-bottom: 1px solid #dee0e2;
-  padding: 20px 5px 20px 5px;
+  padding: 20px 5px 10px 5px;
   display: flex;
   cursor: pointer;
 
@@ -35,6 +35,10 @@ export const OnlineIndicator = styled.div`
   background-color: ${(props) => {
     return props.theme.colors.green;
   }};
+
+  @media (max-width: 768px) {
+    padding: 5px 5px;
+  } ;
 `;
 
 export const DetailsCol = styled.div`
@@ -47,6 +51,9 @@ export const ChatListHeader = styled.div`
   justify-content: space-between;
   margin-bottom: 5px;
   padding-left: 5px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ChatMessageCol = styled.div`
@@ -64,6 +71,7 @@ export const UserChatAvatar = styled.img`
 export const ChatTitle = styled.div`
   font-family: 'Open-Sans', sans-serif;
   color: rgb(67, 66, 66);
+  font-size: 1rem;
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
@@ -76,6 +84,7 @@ export const ChatCreatedDate = styled.div`
 
 export const ChatLastMessage = styled.div`
   justify-content: space-between;
+  font-size: 1rem;
   align-items: center;
   overflow: hidden;
   display: -webkit-box;

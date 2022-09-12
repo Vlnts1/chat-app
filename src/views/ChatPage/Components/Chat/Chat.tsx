@@ -9,7 +9,7 @@ const Chat = () => {
     <Container>
       <CurrentUserHeader />
       <Col>
-        <MessageList />
+        <MessageList IsMyMessage />
         <ChatInput />
       </Col>
     </Container>

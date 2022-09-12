@@ -11,14 +11,14 @@ export const MessageContainer = styled.div<IsMyMessageProps>`
 
   .MessageText {
     background-color: ${(props) => {
-    return props.IsMyMessage ? props.theme.colors.gray : props.theme.colors.dimgray;
-  }};
+      return props.IsMyMessage ? props.theme.colors.gray : props.theme.colors.dimgray;
+    }};
   }
 
   .ReceiverUserAvatar {
     visibility: ${(props) => {
-    return props.IsMyMessage ? 'hidden' : 'visible';
-  }};
+      return props.IsMyMessage ? 'hidden' : 'visible';
+    }};
   }
 
   align-items: ${(props) => {

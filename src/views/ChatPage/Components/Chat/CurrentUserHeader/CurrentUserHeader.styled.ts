@@ -4,7 +4,7 @@ export const Header = styled.div`
   background: rgb(248, 248, 248);
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 10vh;
 
   padding: 10px 20px;
   color: black;
