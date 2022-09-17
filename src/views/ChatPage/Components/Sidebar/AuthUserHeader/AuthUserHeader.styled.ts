@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  padding: 20px 30px;
+  padding: 15px 15px;
   text-align: center;
-  height: 10vh;
+  height: 7vh;
   color: black;
   font-size: 30px;
 `;

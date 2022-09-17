@@ -16,6 +16,7 @@ const Sidebar = () => {
       users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase())),
     );
   }, [search, users]);
+
   return (
     <Container>
       <Col>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ChatContext } from '../../../../../hooks/ChatContext';
 import { User } from '../../../../../types/Types';
 import { ChatItem } from '../ChatItem/ChatItem';
@@ -11,14 +11,35 @@ type ChatListProps = {
 const ChatList = ({ searchedUsers }: ChatListProps) => {
   const { messages } = useContext(ChatContext);
 
+  const chats = useMemo(() => {
+    const usersWithLastMessageDate = searchedUsers.map((user) => {
+      const specificUserMessages = messages.filter((message) => message.chatId === user.id);
+
+      return {
+        lastMessageDate: specificUserMessages[specificUserMessages.length - 1].time,
+        user,
+        messages: specificUserMessages,
+      };
+    });
+
+    const sortedChats = usersWithLastMessageDate
+      .sort((a, b) => new Date(b.lastMessageDate).getTime() - new Date(a.lastMessageDate).getTime())
+      .map((chat) => {
+        return {
+          lastMessageDate: chat.lastMessageDate,
+          user: chat.user,
+          messages: chat.messages,
+        };
+      });
+
+    return sortedChats;
+  }, [searchedUsers, messages]);
+
   return (
     <Container>
       <ChatListHeader>Chats</ChatListHeader>
-      {searchedUsers.map((user, id) => {
-        const specificUserMessages = messages.filter((message) => message.chatId === user.id);
-        return (
-          <ChatItem key={id} specificUser={user} specificUserMessages={specificUserMessages} />
-        );
+      {chats.map(({ user, messages }) => {
+        return <ChatItem key={user.id} specificUser={user} specificUserMessages={messages} />;
       })}
     </Container>
   );
