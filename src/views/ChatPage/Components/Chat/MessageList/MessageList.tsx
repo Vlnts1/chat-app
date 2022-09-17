@@ -1,26 +1,25 @@
 import React, { FC } from 'react';
-import { Message } from '../Message/Message';
+import { Message, User } from '../../../../../types/Types';
+import { ChatMessage } from '../Message/Message';
 import { Container } from './MessageList.styled';
 
-type IsMyMessage = {
-  IsMyMessage: boolean;
+type MessageProps = {
+  isMyMessage: boolean;
+  currentMessages: Message[];
+  activeUser: User;
 };
 
-const MessageList: FC<IsMyMessage> = () => {
+const MessageList: FC<MessageProps> = ({ currentMessages, activeUser }) => {
   return (
     <Container>
-      <Message IsMyMessage />
-      <Message IsMyMessage={false} />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
-      <Message IsMyMessage />
+      {currentMessages.map((message, id) => (
+        <ChatMessage
+          isMyMessage={message.receiver ? false : true}
+          key={id}
+          message={message}
+          userAvatar={activeUser.avatar}
+        />
+      ))}
     </Container>
   );
 };

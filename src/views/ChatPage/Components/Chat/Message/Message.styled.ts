@@ -1,32 +1,32 @@
 import styled from 'styled-components';
 
-type IsMyMessageProps = {
-  IsMyMessage: boolean;
+type isMyMessageProps = {
+  isMyMessage: boolean;
 };
 
-export const MessageContainer = styled.div<IsMyMessageProps>`
+export const MessageContainer = styled.div<isMyMessageProps>`
   display: flex;
   flex-direction: column;
   padding: 10px 0px 15px 20px;
 
   .MessageText {
     background-color: ${(props) => {
-      return props.IsMyMessage ? props.theme.colors.gray : props.theme.colors.dimgray;
+      return props.isMyMessage ? props.theme.colors.gray : props.theme.colors.dimgray;
     }};
   }
 
   .ReceiverUserAvatar {
     visibility: ${(props) => {
-      return props.IsMyMessage ? 'hidden' : 'visible';
+      return props.isMyMessage ? 'hidden' : 'visible';
     }};
   }
 
   align-items: ${(props) => {
-    return props.IsMyMessage ? 'flex-end' : 'flex-start';
+    return props.isMyMessage ? 'flex-end' : 'flex-start';
   }};
 
   padding: ${(props) => {
-    return props.IsMyMessage ? '0px 15px;' : '5px 5px;';
+    return props.isMyMessage ? '0px 15px;' : '5px 5px;';
   }};
 
   @media (max-width: 768px) {

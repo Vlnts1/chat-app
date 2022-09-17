@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { ChatProvider } from './hooks/ChatContext';
 
@@ -9,7 +9,10 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChatProvider>
-        <App />
+        <Routes>
+          <Route path="*" element={<Navigate to="/chats/1" replace />} />
+          <Route path="/chats/:id" element={<App />} />
+        </Routes>
       </ChatProvider>
     </BrowserRouter>
   </React.StrictMode>,

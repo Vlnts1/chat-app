@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Message } from '../../../../../types/Types';
 import {
   MessageDate,
   MessageContainer,
@@ -8,23 +9,27 @@ import {
 } from './Message.styled';
 
 type MessageProps = {
-  IsMyMessage: boolean;
+  isMyMessage: boolean;
+  message: Message;
+  userAvatar: string;
 };
 
-const Message: FC<MessageProps> = ({ IsMyMessage }) => {
+const ChatMessage: FC<MessageProps> = ({ isMyMessage, message, userAvatar }) => {
+  const messageDate = new Date(message.time).toLocaleString();
+
   return (
-    <MessageContainer IsMyMessage={IsMyMessage}>
+    <MessageContainer isMyMessage={isMyMessage}>
       <MessageBox>
         <ReceiverUserAvatar
-          src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
+          src={userAvatar}
           alt="Receiver User Avatar"
           className="ReceiverUserAvatar"
         />
-        <MessageText className="MessageText">We are losing money</MessageText>
+        <MessageText className="MessageText">{message.text}</MessageText>
       </MessageBox>
-      <MessageDate>17:00 17/02/19</MessageDate>
+      <MessageDate>{messageDate}</MessageDate>
     </MessageContainer>
   );
 };
 
-export { Message };
+export { ChatMessage };

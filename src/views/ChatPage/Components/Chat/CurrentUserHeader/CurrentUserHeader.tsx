@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { User } from '../../../../../types/Types';
 import {
   CurrentChatUserAvatar,
   CurrentChatUserName,
@@ -6,15 +7,16 @@ import {
   Row,
 } from './CurrentUserHeader.styled';
 
-const CurrentUserHeader = () => {
+type CurrentUserAvatarProps = {
+  activeUser: User;
+};
+
+const CurrentUserHeader: FC<CurrentUserAvatarProps> = ({ activeUser }) => {
   return (
     <Header>
       <Row>
-        <CurrentChatUserAvatar
-          src="https://cdn-icons-png.flaticon.com/512/6997/6997660.png"
-          alt="User Avatar"
-        />
-        <CurrentChatUserName>Josefina</CurrentChatUserName>
+        <CurrentChatUserAvatar src={activeUser.avatar} alt="User Avatar" />
+        <CurrentChatUserName>{activeUser.name}</CurrentChatUserName>
       </Row>
     </Header>
   );
