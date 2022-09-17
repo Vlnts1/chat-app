@@ -18,7 +18,7 @@ const Chat = () => {
     setActiveUser(users.find((user) => user.id === id) || ({} as User));
     setCurrentMessages(
       [...messages]
-        .sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime())
+        .sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime())
         .filter((message) => message.chatId === id),
     );
   }, [id, messages, users]);
