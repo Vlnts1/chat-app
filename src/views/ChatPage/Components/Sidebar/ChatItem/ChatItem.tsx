@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Message, User } from '../../../../../types/Types';
 import {
   UserChatAvatar,
@@ -22,6 +22,11 @@ type ChatItemProps = {
 const ChatItem = ({ specificUser, specificUserMessages }: ChatItemProps) => {
   const [latestMessage, setLatestMessage] = useState<Message>({} as Message);
   const [latestMessageTime, setLatestMessageTime] = useState<string>('');
+  const navigate = useNavigate();
+
+  const changeChat = () => {
+    navigate(`/chats/${specificUser.id}`);
+  };
 
   useEffect(() => {
     const sortedMessages = specificUserMessages.sort(
@@ -35,27 +40,23 @@ const ChatItem = ({ specificUser, specificUserMessages }: ChatItemProps) => {
   }, [latestMessage, specificUserMessages]);
 
   return (
-    <>
-      <Link style={{ textDecoration: 'none' }} to={`/chats/${specificUser.id}`}>
-        <ContainerChatItem>
-          <ImageCol>
-            <UserChatAvatar src={specificUser.avatar} alt="User Chat Avatar" />
-            <OnlineIndicator />
-          </ImageCol>
+    <ContainerChatItem onClick={changeChat}>
+      <ImageCol>
+        <UserChatAvatar src={specificUser.avatar} alt="User Chat Avatar" />
+        <OnlineIndicator />
+      </ImageCol>
 
-          <DetailsCol>
-            <ChatListHeader>
-              <ChatTitle>{specificUser.name}</ChatTitle>
-              <ChatCreatedDate>{latestMessageTime}</ChatCreatedDate>
-            </ChatListHeader>
+      <DetailsCol>
+        <ChatListHeader>
+          <ChatTitle>{specificUser.name}</ChatTitle>
+          <ChatCreatedDate>{latestMessageTime}</ChatCreatedDate>
+        </ChatListHeader>
 
-            <ChatMessageCol>
-              <ChatLastMessage>{latestMessage.text}</ChatLastMessage>
-            </ChatMessageCol>
-          </DetailsCol>
-        </ContainerChatItem>
-      </Link>
-    </>
+        <ChatMessageCol>
+          <ChatLastMessage>{latestMessage.text}</ChatLastMessage>
+        </ChatMessageCol>
+      </DetailsCol>
+    </ContainerChatItem>
   );
 };
 
