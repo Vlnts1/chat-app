@@ -22,3 +22,30 @@ export type Chats = ChatsData & {
   activeUser: string;
   setActiveUser: (id: string) => void;
 };
+
+export type ChatState = {
+  chats: User[] & Message[];
+  error: null | string;
+};
+
+export enum ChatActionTypes {
+  FETCH_CHATS = 'FETCH_CHATS',
+  FETCH_CHATS_SUCCESS = 'FETCH_CHATS_SUCCESS',
+  FETCH_CHATS_ERROR = 'FETCH_CHATS_ERROR',
+}
+
+export type FetchChatAction = {
+  type: ChatActionTypes.FETCH_CHATS;
+};
+
+export type FetchChatSuccessAction = {
+  type: ChatActionTypes.FETCH_CHATS_SUCCESS;
+  payload: User[] & Message[];
+};
+
+export type FetchChatErrorAction = {
+  type: ChatActionTypes.FETCH_CHATS_ERROR;
+  payload: string;
+};
+
+export type ChatAction = FetchChatAction | FetchChatErrorAction | FetchChatSuccessAction;

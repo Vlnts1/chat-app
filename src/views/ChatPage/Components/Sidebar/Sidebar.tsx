@@ -5,11 +5,18 @@ import { AuthUserHeader } from './AuthUserHeader/AuthUserHeader';
 import { Container, Col } from './Sidebar.styled';
 import { ChatContext } from '../../../../hooks/ChatContext';
 import { User } from '../../../../types/Types';
+import { useTypedSelector } from '../../../../hooks/useTypedSelector';
 
 const Sidebar = () => {
+  const { chats } = useTypedSelector((state) => state.chat);
+  console.log(chats);
   const [search, setSearch] = useState<string>('');
   const { users } = useContext(ChatContext);
   const [searchedUsers, setSearchedUsers] = useState<User[]>(users);
+
+  // useEffect (() => {
+  //   dispatch(fetchChats())
+  // }, [])
 
   useEffect(() => {
     setSearchedUsers(
