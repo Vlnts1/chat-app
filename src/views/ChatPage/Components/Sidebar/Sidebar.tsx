@@ -6,6 +6,8 @@ import { Container, Col } from './Sidebar.styled';
 import { ChatContext } from '../../../../hooks/ChatContext';
 import { User } from '../../../../types/Types';
 import { useTypedSelector } from '../../../../hooks/useTypedSelector';
+import { fetchChats } from '../../../../store/actions/chat';
+import { useDispatch } from 'react-redux';
 
 const Sidebar = () => {
   const { chats } = useTypedSelector((state) => state.chat);
@@ -13,10 +15,11 @@ const Sidebar = () => {
   const [search, setSearch] = useState<string>('');
   const { users } = useContext(ChatContext);
   const [searchedUsers, setSearchedUsers] = useState<User[]>(users);
+  const dispatch = useDispatch();
 
-  // useEffect (() => {
-  //   dispatch(fetchChats())
-  // }, [])
+  useEffect(() => {
+    dispatch(fetchChats());
+  }, []);
 
   useEffect(() => {
     setSearchedUsers(

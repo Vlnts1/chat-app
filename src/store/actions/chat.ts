@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
+
 import { ChatAction, ChatActionTypes } from '../../types/Types';
 
 export const fetchChats = () => {

@@ -23,6 +23,15 @@ export type Chats = ChatsData & {
   setActiveUser: (id: string) => void;
 };
 
+export type Joke = {
+  created_at: string;
+  icon_url: string;
+  id: string;
+  updated_at: string;
+  url: string;
+  value: string;
+};
+
 export type ChatState = {
   chats: User[] & Message[];
   error: null | string;

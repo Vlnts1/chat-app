@@ -31,7 +31,8 @@ export const ChatProvider: FC<ChatProviderProps> = ({ children }) => {
 
   const updateMessages = (message: Message) => {
     setMessages((prevMessages) => {
-      return [...prevMessages, message];
+      prevMessages.unshift(message);
+      return [...prevMessages];
     });
   };
   return (
