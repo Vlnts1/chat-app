@@ -1,19 +1,30 @@
-import { ChatAction, ChatActionTypes, ChatState } from '../../types/Types';
+import { AnyAction } from 'redux';
+import { ChatActionTypes, ChatState } from '../../types/Types';
 
 const initialState: ChatState = {
   chats: [],
-  error: null,
+  messages: [],
+  selectedChatId: 1,
 };
 
-export const ChatReducer = (state = initialState, action: ChatAction): ChatState => {
+export const ChatReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ChatActionTypes.FETCH_CHATS:
-      return { error: null, chats: [] };
-    case ChatActionTypes.FETCH_CHATS_SUCCESS:
-      return { error: null, chats: action.payload };
-    case ChatActionTypes.FETCH_CHATS_ERROR:
-      return { error: action.payload, chats: [] };
-    default:
-      return state;
+      return { ...state, chats: [...state.chats, ...action.payload] };
+    case ChatActionTypes.SET_SELECTED_CHAT_ID:
+      return {
+        ...state,
+        selectedChatId: action.payload,
+      };
+    case ChatActionTypes.LOAD_MESSAGES:
+      return {
+        ...state,
+        messages: [...state.messages, ...action.payload],
+      };
+    default: {
+      return {
+        ...state,
+      };
+    }
   }
 };

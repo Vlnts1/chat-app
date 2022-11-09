@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { ChatContext } from '../../../../hooks/ChatContext';
+import { getChatsSelector, getMessagesSelector } from '../../../../hooks/Selectors';
 import { Message, User } from '../../../../types/Types';
 import { Container, Col } from './Chat.styled';
 import { ChatInput } from './ChatInput/ChatInput';
@@ -11,13 +12,14 @@ const Chat = () => {
   const [activeUser, setActiveUser] = useState<User>({} as User);
   const [currentMessages, setCurrentMessages] = useState<Message[]>([]);
 
-  const { users, messages } = useContext(ChatContext);
+  const chats = useSelector(getChatsSelector);
+  const messages = useSelector(getMessagesSelector);
   const { id } = useParams();
 
   useEffect(() => {
-    setActiveUser(users.find((user) => user.id === id) || ({} as User));
+    setActiveUser(chats.find((user) => user.id === id) || ({} as User));
     setCurrentMessages([...messages].filter((message) => message.chatId === id));
-  }, [id, messages, users]);
+  }, [id, messages, chats]);
 
   return (
     <Container>

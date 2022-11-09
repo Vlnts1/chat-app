@@ -40,7 +40,7 @@ const ChatItem = ({ specificUser, specificUserMessages }: ChatItemProps) => {
   }, [latestMessage, specificUserMessages]);
 
   return (
-    <ContainerChatItem onClick={changeChat}>
+    <ContainerChatItem key={specificUser.id} onClick={changeChat}>
       <ImageCol>
         <UserChatAvatar src={specificUser.avatar} alt="User Chat Avatar" />
         <OnlineIndicator />

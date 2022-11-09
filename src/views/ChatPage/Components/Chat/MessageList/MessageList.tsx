@@ -12,10 +12,10 @@ type MessageProps = {
 const MessageList: FC<MessageProps> = ({ currentMessages, activeUser }) => {
   return (
     <Container>
-      {currentMessages.map((message, id) => (
+      {currentMessages.map((message, index) => (
         <ChatMessage
           isMyMessage={message.receiver ? false : true}
-          key={id}
+          key={index}
           message={message}
           userAvatar={activeUser.avatar}
         />

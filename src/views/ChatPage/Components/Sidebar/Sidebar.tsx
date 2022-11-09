@@ -1,31 +1,35 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChatList } from './Chatlist/Chatlist';
 import { ChatSearch } from './ChatSearch/ChatSearch';
 import { AuthUserHeader } from './AuthUserHeader/AuthUserHeader';
 import { Container, Col } from './Sidebar.styled';
-import { ChatContext } from '../../../../hooks/ChatContext';
-import { User } from '../../../../types/Types';
-import { useTypedSelector } from '../../../../hooks/useTypedSelector';
-import { fetchChats } from '../../../../store/actions/chat';
+import { getChatsSelector } from '../../../../hooks/Selectors';
+import { loadChatsAction, loadMessagesAction } from '../../../../store/actions/chat';
 import { useDispatch } from 'react-redux';
+import { getChats, getMessages } from '../../../../api/getChats';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
-  const { chats } = useTypedSelector((state) => state.chat);
-  console.log(chats);
   const [search, setSearch] = useState<string>('');
-  const { users } = useContext(ChatContext);
-  const [searchedUsers, setSearchedUsers] = useState<User[]>(users);
+  const chats = useSelector(getChatsSelector);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchChats());
+    const loadDataFromServer = async () => {
+      const responseChats = await getChats();
+      const responseMessages = await getMessages();
+
+      dispatch(loadMessagesAction(responseMessages));
+      dispatch(loadChatsAction(responseChats));
+    };
+
+    loadDataFromServer();
   }, []);
 
-  useEffect(() => {
-    setSearchedUsers(
-      users.filter((user) => user.name.toLowerCase().includes(search.toLowerCase())),
-    );
-  }, [search, users]);
+  const searchedUsers = chats.filter((chat) => {
+    return chat.name.toLowerCase().includes(search.toLowerCase());
+  });
 
   return (
     <Container>

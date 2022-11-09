@@ -1,5 +1,6 @@
-import React, { useContext, useMemo } from 'react';
-import { ChatContext } from '../../../../../hooks/ChatContext';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { getMessagesSelector } from '../../../../../hooks/Selectors';
 import { User } from '../../../../../types/Types';
 import { ChatItem } from '../ChatItem/ChatItem';
 import { ChatListHeader, Container } from './ChatList.styled';
@@ -9,7 +10,7 @@ type ChatListProps = {
 };
 
 const ChatList = ({ searchedUsers }: ChatListProps) => {
-  const { messages } = useContext(ChatContext);
+  const messages = useSelector(getMessagesSelector);
 
   const chats = useMemo(() => {
     const usersWithLastMessageDate = searchedUsers.map((user) => {

@@ -1,7 +1,6 @@
-import { applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import { rootReducer } from './reducers';
+import { createStore } from 'redux';
+import { ChatReducer } from './reducers/chatReducer';
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = createStore(ChatReducer);
 
 export type AppDispatch = typeof store.dispatch;

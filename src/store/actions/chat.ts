@@ -1,16 +1,16 @@
-import axios from 'axios';
-import { Dispatch } from 'redux';
+import { ChatActionTypes, Message, User } from '../../types/Types';
 
-import { ChatAction, ChatActionTypes } from '../../types/Types';
+export const setSelectedChatIdAction = (payload: string) => ({
+  type: ChatActionTypes.SET_SELECTED_CHAT_ID,
+  payload,
+});
 
-export const fetchChats = () => {
-  return async (dispatch: Dispatch<ChatAction>) => {
-    try {
-      dispatch({ type: ChatActionTypes.FETCH_CHATS });
-      const response = await axios.get('https://my-json-server.typicode.com/Vlnts1/chat-app/db');
-      dispatch({ type: ChatActionTypes.FETCH_CHATS_SUCCESS, payload: response.data });
-    } catch (e) {
-      dispatch({ type: ChatActionTypes.FETCH_CHATS_ERROR, payload: 'fetch error' });
-    }
-  };
-};
+export const loadChatsAction = (payload: User[]) => ({
+  type: ChatActionTypes.FETCH_CHATS,
+  payload,
+});
+
+export const loadMessagesAction = (payload: Message[]) => ({
+  type: ChatActionTypes.LOAD_MESSAGES,
+  payload,
+});
