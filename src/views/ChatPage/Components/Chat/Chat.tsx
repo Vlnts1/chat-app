@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getChatsSelector, getMessagesSelector } from '../../../../hooks/Selectors';
+import { getChatsSelector, getMessagesSelector } from '../../../../store/Selectors';
 import { Message, User } from '../../../../types/Types';
 import { Container, Col } from './Chat.styled';
 import { ChatInput } from './ChatInput/ChatInput';

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { getMessagesSelector } from '../../../../../hooks/Selectors';
+import { getMessagesSelector } from '../../../../../store/Selectors';
 import { User } from '../../../../../types/Types';
 import { ChatItem } from '../ChatItem/ChatItem';
 import { ChatListHeader, Container } from './ChatList.styled';

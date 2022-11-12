@@ -3,7 +3,7 @@ import { ChatList } from './Chatlist/Chatlist';
 import { ChatSearch } from './ChatSearch/ChatSearch';
 import { AuthUserHeader } from './AuthUserHeader/AuthUserHeader';
 import { Container, Col } from './Sidebar.styled';
-import { getChatsSelector } from '../../../../hooks/Selectors';
+import { getChatsSelector } from '../../../../store/Selectors';
 import { loadChatsAction, loadMessagesAction } from '../../../../store/actions/chat';
 import { useDispatch } from 'react-redux';
 import { getChats, getMessages } from '../../../../api/getChats';
