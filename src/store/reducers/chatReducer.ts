@@ -21,6 +21,11 @@ export const ChatReducer = (state = initialState, action: AnyAction) => {
         ...state,
         messages: [...state.messages, ...action.payload],
       };
+    case ChatActionTypes.ADD_MESSAGES:
+      return {
+        ...state,
+        messages: [...action.payload, ...state.messages],
+      };
     default: {
       return {
         ...state,

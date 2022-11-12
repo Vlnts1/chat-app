@@ -14,3 +14,9 @@ export const loadMessagesAction = (payload: Message[]) => ({
   type: ChatActionTypes.LOAD_MESSAGES,
   payload,
 });
+
+
+export const addNewMessages = (payload: Message[]) => ({
+  type: ChatActionTypes.ADD_MESSAGES,
+  payload,
+});
