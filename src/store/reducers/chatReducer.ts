@@ -10,7 +10,7 @@ const initialState: ChatState = {
 export const ChatReducer = (state = initialState, action: AnyAction) => {
   switch (action.type) {
     case ChatActionTypes.FETCH_CHATS:
-      return { ...state, chats: [...state.chats, ...action.payload] };
+      return { ...state, chats: [...action.payload] };
     case ChatActionTypes.SET_SELECTED_CHAT_ID:
       return {
         ...state,
@@ -19,7 +19,7 @@ export const ChatReducer = (state = initialState, action: AnyAction) => {
     case ChatActionTypes.LOAD_MESSAGES:
       return {
         ...state,
-        messages: [...state.messages, ...action.payload],
+        messages: [...action.payload],
       };
     case ChatActionTypes.ADD_MESSAGES:
       return {
